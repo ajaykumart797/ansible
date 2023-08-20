@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-    - name: install postgresql
+    - name: uninstall postgresql
       apt:
         name: postgresql
         state: absent
