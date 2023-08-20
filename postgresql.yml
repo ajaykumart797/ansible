@@ -1,0 +1,10 @@
+---
+- name: install nginx
+  hosts: all
+  become: true
+  tasks:
+    - name: insta
+      apt:
+        name: postgresql
+        state: absent
+
