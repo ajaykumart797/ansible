@@ -3,7 +3,7 @@
   hosts: all
   become: true
   tasks:
-    - name: install nginx
+    - name: uninstall nginx
       apt:
         name: nginx
         state: absent
