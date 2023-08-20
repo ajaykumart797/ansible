@@ -1,0 +1,11 @@
+---
+- name: install nginx
+  hosts: all
+  become: true
+  tasks:
+    - name: insta
+      apt:
+        name: nginx
+        state: absent
+
+
