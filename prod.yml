@@ -1,6 +1,6 @@
 ---
 - name: Copy Docker files and build/run containers
-  hosts: destination_host  # Replace with the name of your destination host/group
+  hosts: all  # Replace with the name of your destination host/group
   become: yes
 
   tasks:
