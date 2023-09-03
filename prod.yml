@@ -1,0 +1,20 @@
+---
+- name: Copy Docker files and build/run containers
+  hosts: destination_host  # Replace with the name of your destination host/group
+  become: yes
+
+  tasks:
+    - name: Copy Docker files
+      copy:
+        src: /home/test/Flask_app/  # Specify the directory containing Dockerfile, docker-compose.yml, and requirements.txt
+        dest: /home/ajay/test
+      register: copy_result
+
+    - name: Build Docker image
+      command: docker build -t flask_app /home/ajay/test
+      when: copy_result.changed  # Only build if files were copied
+
+    - name: Run Docker containers
+      command: docker-compose -f /home/ajay/test/docker-compose.yml up -d
+      when: copy_result.changed  # Only run if files were copied
+
