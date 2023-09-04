@@ -10,15 +10,12 @@
       register: copy_result
 
     - name: Build Docker image
-      command: /usr/bin/docker build -t my_flask_app  /home/ajay/test/Flask_app/  # Specify the full path to docker and the directory containing Dockerfile
-        # Only build if files were copied
+      command: /usr/bin/docker build -t my_flask_app  /home/ajay/test/Flask_app/
 
     - name: Run Docker containers
-      command: /usr/bin/docker-compose -f /home/ajay/test/Flask_app/  # Specify the full path to docker-compose and the location of docker-compose.yml
-        # Only run if files were copied
+      command: /usr/bin/docker-compose -f /home/ajay/test/Flask_app/  
 
     - name: Run Docker image
       tags: test
-      command: /usr/bin/docker run -d my_flask_app  # Replace 'my_flask_app' with the actual image name
-      # Only run if files were copied (use the 'when' directiv)
+      command: /usr/bin/docker run -d my_flask_app  
 
