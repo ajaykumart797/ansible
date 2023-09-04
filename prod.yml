@@ -5,7 +5,7 @@
   tasks:
     - name: Copy Docker files
       copy:
-        src: /home/test/Flask_app  # Specify the directory containing Dockerfile, docker-compose.yml, and requirements.txt
+        src: /home/test/Flask_app  # Specify the directory containing Docker
         dest: /home/test/test
       register: copy_result
 
