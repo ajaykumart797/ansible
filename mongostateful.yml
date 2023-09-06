@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: mongo
   serviceName: mongo
-  replicas: 3
+  replicas: 4
   template:
     metadata:
       labels:
