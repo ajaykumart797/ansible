@@ -10,8 +10,8 @@
 "jenkins-runner.hostConfigs": {
     "jenkins-master": {
         "url": "http://127.0.0.1:8080",
-        "user": "ajay",
-        "password": "Sis19743?!",
+        "user": "name",
+        "password": "123",
         "useCrumbIssuer": true,
       
     }
