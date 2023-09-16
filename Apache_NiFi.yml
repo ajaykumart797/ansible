@@ -1,0 +1,34 @@
+- name: Install Apache NiFi
+  hosts: all  # Replace with the hostname or IP address of the new target machine
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
+      ignore_errors: True
+
+
+    - name: Install Java
+      apt:
+        name: openjdk-8-jdk  # Or use appropriate package name for Java
+      when: ansible_os_family == 'Debian'
+
+    - name: Download and extract NiFi
+      unarchive:
+        src: https://archive.apache.org/dist/nifi/1.22.0/nifi-1.22.0-bin.zip
+        dest: /opt/
+        remote_src: yes
+      when: ansible_os_family == 'Debian'
+
+    - name: Rename NiFi directory
+      command: mv /opt/nifi-1.22.0 /opt/nifi
+
+    - name: Start NiFi
+      tags: only
+      command: /opt/nifi/nifi-1.22.0/bin/nifi.sh start
+
+    - name: change user name
+      tags: user
+      command: /opt/nifi/nifi-1.22.0/bin/nifi.sh  set-single-user-credentials admin "adminadmin123"

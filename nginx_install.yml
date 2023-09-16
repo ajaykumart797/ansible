@@ -1,0 +1,11 @@
+---
+- name: install nginx in linux
+  hosts: all
+  become: true
+  tasks:
+    - name: uninstall nginx
+      apt:
+        name: nginx
+        state: present
+
+
