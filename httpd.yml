@@ -1,0 +1,10 @@
+---
+- name: install nginx
+  hosts: all
+  become: true
+  tasks:
+    - name: uninstall nginx
+      apt:
+        name: httpd
+        state: absent
+

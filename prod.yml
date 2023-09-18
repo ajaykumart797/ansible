@@ -1,0 +1,21 @@
+- name: Copy Docker files and build/run containers
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Copy Docker files
+      copy:
+        src: /home/test/Flask_app  # Specify the directory containing Docker
+        dest: /home/test/test
+      register: copy_result
+
+    - name: Build Docker image
+      command: /usr/bin/docker build -t my_flask_app  /home/ajay/test/Flask_app/
+
+    - name: Run Docker containers
+      command: /usr/bin/docker-compose -f /home/ajay/test/Flask_app/  
+
+    - name: Run Docker image
+      tags: test
+      command: /usr/bin/docker run -d my_flask_app  
+

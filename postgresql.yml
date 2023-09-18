@@ -1,0 +1,10 @@
+---
+- name: install  postgresql
+  hosts: all
+  become: true
+  tasks:
+    - name: uninstall postgresql
+      apt:
+        name: postgresql
+        state: absent
+
