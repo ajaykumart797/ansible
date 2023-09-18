@@ -16,7 +16,7 @@ spec:
         image: docker9743/git-ops_project:v1
         resources:
           limits:
-            memory: "128Mi"
+            memory: "127Mi"
             cpu: "500m"
         ports:
         - containerPort: 5000
